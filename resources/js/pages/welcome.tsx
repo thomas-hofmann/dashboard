@@ -16,13 +16,13 @@ export default function Welcome() {
                 />
             </Head>
 
-            <div className="flex min-h-screen items-center justify-center bg-[#FDFDFC] p-6 text-[#1b1b18] dark:bg-[#0a0a0a] dark:text-white">
-                <Card className="w-full max-w-md border border-muted shadow-xl dark:border-neutral-700">
-                    <CardHeader className="flex flex-row items-center justify-between">
-                        <HeadingLarge title="Hofmann: Dashboard" description="Willkommen! Hier kannst du deine Projekte verwalten, Statistiken einsehen und mit deinem Team zusammenarbeiten." />
+            <div className="flex min-h-screen flex-col items-center bg-[#FDFDFC] p-6 text-[#1b1b18] lg:justify-center lg:p-8 dark:bg-[#0a0a0a]">
+                <Card>
+                    <CardHeader>
+                        <HeadingLarge title="Hofmann: Dashboard" description="Hier kannst du deine Statistiken einsehen." />
                     </CardHeader>
                     <CardContent>
-                        <nav className="flex flex-row gap-3">
+                        <nav>
                             {auth.user ? (
                             <Link
                                 href={route('dashboard')}
