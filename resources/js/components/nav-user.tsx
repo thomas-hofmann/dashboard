@@ -3,12 +3,20 @@ import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '@/c
 import { UserInfo } from '@/components/user-info';
 import { UserMenuContent } from '@/components/user-menu-content';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { type SharedData } from '@/types';
-import { usePage } from '@inertiajs/react';
+import { type User } from '@/types';
 import { ChevronsUpDown } from 'lucide-react';
 
+const demoUser: User = {
+    id: 1,
+    name: 'Max Mustermann',
+    email: 'max.mustermann@northwind.studio',
+    avatar: '',
+    email_verified_at: '2026-01-12T09:12:00Z',
+    created_at: '2024-04-02T10:22:00Z',
+    updated_at: '2026-01-24T16:40:00Z',
+};
+
 export function NavUser() {
-    const { auth } = usePage<SharedData>().props;
     const { state } = useSidebar();
     const isMobile = useIsMobile();
 
@@ -18,7 +26,7 @@ export function NavUser() {
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <SidebarMenuButton size="lg" className="group text-sidebar-accent-foreground data-[state=open]:bg-sidebar-accent">
-                            <UserInfo user={auth.user} />
+                            <UserInfo user={demoUser} />
                             <ChevronsUpDown className="ml-auto size-4" />
                         </SidebarMenuButton>
                     </DropdownMenuTrigger>
@@ -27,7 +35,7 @@ export function NavUser() {
                         align="end"
                         side={isMobile ? 'bottom' : state === 'collapsed' ? 'left' : 'bottom'}
                     >
-                        <UserMenuContent user={auth.user} />
+                        <UserMenuContent user={demoUser} />
                     </DropdownMenuContent>
                 </DropdownMenu>
             </SidebarMenuItem>
