@@ -157,3 +157,40 @@
         @apply bg-background text-foreground;
     }
 }
+
+@layer utilities {
+    .carousel-mask {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .carousel-track {
+        display: flex;
+        gap: 1rem;
+        width: max-content;
+        animation: carousel-scroll 32s linear infinite;
+        will-change: transform;
+    }
+
+    .carousel-item {
+        width: 220px;
+        height: 140px;
+        flex: 0 0 auto;
+    }
+
+    @keyframes carousel-scroll {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-track {
+        animation: none;
+        transform: none;
+    }
+}

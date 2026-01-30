@@ -10,3 +10,7 @@ Route::get('/', function () {
 Route::get('dashboard', function () {
     return Inertia::render('dashboard');
 })->name('dashboard');
+
+Route::get('gallery', function () {
+    return Inertia::render('gallery');
+})->name('gallery');

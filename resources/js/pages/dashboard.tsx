@@ -56,18 +56,22 @@ export default function Dashboard() {
     ];
 
     const trendBars = [24, 48, 32, 64, 52, 72, 60, 84, 78, 96, 88, 74];
+    const carouselImages = [
+        'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1471879832106-c7ab9e0cee23?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80',
+    ];
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
-            <div className="flex h-full flex-1 flex-col gap-6 overflow-x-hidden rounded-xl p-4 md:p-6">
-                <section className="relative overflow-hidden rounded-2xl border border-sidebar-border/70 bg-[radial-gradient(circle_at_top,_rgba(14,116,144,0.18),_transparent_60%),radial-gradient(circle_at_20%_80%,_rgba(240,171,252,0.25),_transparent_45%)] p-6 shadow-sm dark:border-sidebar-border dark:bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.15),_transparent_55%),radial-gradient(circle_at_20%_80%,_rgba(216,180,254,0.18),_transparent_45%)]">
-                    <div className="absolute right-6 top-6 hidden items-center gap-2 rounded-full border border-white/40 bg-white/70 px-3 py-1 text-xs font-medium text-neutral-600 shadow-sm backdrop-blur dark:border-white/10 dark:bg-neutral-900/70 dark:text-neutral-300 sm:inline-flex">
-                        <Sparkles className="size-3.5" />
-                        Studio Demo - Live
-                    </div>
+            <div className="flex flex-col gap-6 overflow-x-clip rounded-xl p-4 md:p-6">
+                <section className="relative overflow-hidden rounded-2xl border border-sidebar-border/70 bg-[radial-gradient(circle_at_top,_rgba(14,116,144,0.18),_transparent_60%),radial-gradient(circle_at_20%_80%,_rgba(240,171,252,0.25),_transparent_45%)] p-6 shadow-sm dark:border-sidebar-border dark:bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.15),_transparent_55%),radial-gradient(circle_at_20%_80%,_rgba(216,180,254,0.18),_transparent_45%)]" data-aos="fade-up">
                     <div className="relative z-10 grid gap-6 md:grid-cols-[1.2fr_0.8fr]">
-                        <div className="space-y-4">
+                        <div className="min-w-0 space-y-4">
                             <div className="flex flex-wrap items-center gap-2">
                                 <Badge className="bg-neutral-800 text-white dark:bg-neutral-100 dark:text-neutral-900">Northwind Studio</Badge>
                                 <Badge variant="outline" className="border-neutral-300 text-neutral-600 dark:border-neutral-700 dark:text-neutral-300">
@@ -96,7 +100,7 @@ export default function Dashboard() {
                                 </div>
                             </div>
                         </div>
-                        <div className="rounded-xl border border-neutral-200/60 bg-white/80 p-4 shadow-sm backdrop-blur dark:border-neutral-800 dark:bg-neutral-900/70">
+                        <div className="min-w-0 rounded-xl border border-neutral-200/60 bg-white/80 p-4 shadow-sm backdrop-blur dark:border-neutral-800 dark:bg-neutral-900/70">
                             <div className="flex items-center justify-between">
                                 <div>
                                     <p className="text-xs uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400">Week 04 snapshot</p>
@@ -130,7 +134,7 @@ export default function Dashboard() {
                     </div>
                 </section>
 
-                <section className="grid gap-4 md:grid-cols-4">
+                <section className="grid gap-4 md:grid-cols-4" data-aos="fade-up">
                     {kpis.map((kpi) => (
                         <Card key={kpi.label} className="border-sidebar-border/70 shadow-none">
                             <CardHeader>
@@ -147,7 +151,7 @@ export default function Dashboard() {
                     ))}
                 </section>
 
-                <section className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+                <section className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]" data-aos="fade-up">
                     <Card className="border-sidebar-border/70">
                         <CardHeader>
                             <CardDescription>Pipeline focus</CardDescription>
@@ -186,7 +190,11 @@ export default function Dashboard() {
                         </CardHeader>
                         <CardContent className="space-y-4">
                             {signals.map((signal) => (
-                                <div key={signal.title} className="flex items-center justify-between rounded-lg border border-neutral-200/70 p-3 dark:border-neutral-800">
+                                <div
+                                    key={signal.title}
+                                    className="flex items-center justify-between rounded-lg border border-neutral-200/70 p-3 dark:border-neutral-800"
+                                   
+                                >
                                     <div>
                                         <p className="text-sm font-semibold text-neutral-800 dark:text-neutral-100">{signal.title}</p>
                                         <p className="text-xs text-neutral-500 dark:text-neutral-400">{signal.caption}</p>
@@ -219,8 +227,31 @@ export default function Dashboard() {
                         </CardContent>
                     </Card>
                 </section>
-
-                <section className="grid gap-4 lg:grid-cols-[1fr_1fr]">
+                <section className="grid gap-4" data-aos="fade-up">
+                    <Card className="border-sidebar-border/70">
+                        <CardHeader>
+                            <CardDescription>Studio reel</CardDescription>
+                            <CardTitle className="text-xl">Work in motion</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="carousel-mask rounded-xl border border-neutral-200/70 bg-white/60 p-4 dark:border-neutral-800 dark:bg-neutral-900/50">
+                                <div className="carousel-track">
+                                    {[...carouselImages, ...carouselImages].map((src, index) => (
+                                        <div key={`${src}-${index}`} className="carousel-item overflow-hidden rounded-lg border border-neutral-200/70 dark:border-neutral-800">
+                                            <img
+                                                src={src}
+                                                alt={`Studio placeholder ${index + 1}`}
+                                                className="h-full w-full object-cover"
+                                                loading="lazy"
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
+                </section>
+                <section className="grid gap-4 lg:grid-cols-[1fr_1fr]" data-aos="fade-up">
                     <Card className="border-sidebar-border/70">
                         <CardHeader>
                             <CardDescription>Studio feed</CardDescription>
@@ -228,7 +259,11 @@ export default function Dashboard() {
                         </CardHeader>
                         <CardContent className="space-y-3">
                             {activity.map((item, index) => (
-                                <div key={`${item.title}-${index}`} className="flex items-center gap-3 rounded-lg border border-neutral-200/70 p-3 dark:border-neutral-800">
+                                <div
+                                    key={`${item.title}-${index}`}
+                                    className="flex items-center gap-3 rounded-lg border border-neutral-200/70 p-3 dark:border-neutral-800"
+                                   
+                                >
                                     <div className="flex h-9 w-9 items-center justify-center rounded-full bg-neutral-800 text-white dark:bg-neutral-100 dark:text-neutral-900">
                                         <Box className="size-4" />
                                     </div>
@@ -253,7 +288,11 @@ export default function Dashboard() {
                         </CardHeader>
                         <CardContent className="space-y-3">
                             {schedule.map((item) => (
-                                <div key={item.title} className="flex items-center justify-between rounded-lg border border-neutral-200/70 p-3 dark:border-neutral-800">
+                                <div
+                                    key={item.title}
+                                    className="flex items-center justify-between rounded-lg border border-neutral-200/70 p-3 dark:border-neutral-800"
+                                   
+                                >
                                     <div className="flex items-center gap-3">
                                         <div className="flex h-10 w-10 flex-col items-center justify-center rounded-lg bg-neutral-800 text-white dark:bg-neutral-100 dark:text-neutral-900">
                                             <span className="text-xs uppercase">{item.day}</span>
@@ -272,7 +311,7 @@ export default function Dashboard() {
                     </Card>
                 </section>
 
-                <section className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+                <section className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]" data-aos="fade-up">
                     <Card className="border-sidebar-border/70">
                         <CardHeader>
                             <CardDescription>Delivery timeline</CardDescription>
@@ -290,6 +329,7 @@ export default function Dashboard() {
                                 <div
                                     key={`${item.title}-${item.date}`}
                                     className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-neutral-200/70 p-3 dark:border-neutral-800"
+                                   
                                 >
                                     <div>
                                         <p className="text-sm font-semibold text-neutral-800 dark:text-neutral-100">{item.title}</p>
@@ -334,7 +374,7 @@ export default function Dashboard() {
                     </Card>
                 </section>
 
-                <section className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
+                <section className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]" data-aos="fade-up">
                     <Card className="border-sidebar-border/70">
                         <CardHeader>
                             <CardDescription>Client portfolio</CardDescription>
@@ -349,7 +389,11 @@ export default function Dashboard() {
                                 { name: 'Halcyon', tier: 'Partner', spend: 'EUR 53k' },
                                 { name: 'Helio', tier: 'Expansion', spend: 'EUR 67k' },
                             ].map((client) => (
-                                <div key={client.name} className="flex items-center justify-between rounded-lg border border-neutral-200/70 p-3 dark:border-neutral-800">
+                                <div
+                                    key={client.name}
+                                    className="flex items-center justify-between rounded-lg border border-neutral-200/70 p-3 dark:border-neutral-800"
+                                   
+                                >
                                     <div>
                                         <p className="text-sm font-semibold text-neutral-800 dark:text-neutral-100">{client.name}</p>
                                         <p className="text-xs text-neutral-500 dark:text-neutral-400">{client.tier}</p>
@@ -381,6 +425,7 @@ export default function Dashboard() {
                                 <div
                                     key={`${entry.title}-${index}`}
                                     className="flex items-center justify-between rounded-lg border border-neutral-200/70 p-3 dark:border-neutral-800"
+                                   
                                 >
                                     <div>
                                         <p className="text-sm font-medium text-neutral-800 dark:text-neutral-100">{entry.title}</p>
@@ -395,7 +440,7 @@ export default function Dashboard() {
                     </Card>
                 </section>
 
-                <section className="grid gap-4">
+                <section className="grid gap-4" data-aos="fade-up">
                     <Card className="border-sidebar-border/70">
                         <CardHeader>
                             <CardDescription>Archive</CardDescription>
